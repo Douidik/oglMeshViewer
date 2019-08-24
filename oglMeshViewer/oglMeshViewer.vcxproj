@@ -143,6 +143,10 @@
     <ClCompile Include="Source\Util\Matrix.cpp" />
     <ClCompile Include="Source\Util\Shader.cpp" />
     <ClCompile Include="Source\Window.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="Vendor\stbi\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +159,13 @@
     <ClInclude Include="Source\Util\Matrix.h" />
     <ClInclude Include="Source\Util\Shader.h" />
     <ClInclude Include="Source\Window.h" />
+    <ClInclude Include="Vendor\imgui\imconfig.h" />
+    <ClInclude Include="Vendor\imgui\imgui.h" />
+    <ClInclude Include="Vendor\imgui\imgui_impl_glfw_gl3.h" />
+    <ClInclude Include="Vendor\imgui\imgui_internal.h" />
+    <ClInclude Include="Vendor\imgui\stb_rect_pack.h" />
+    <ClInclude Include="Vendor\imgui\stb_textedit.h" />
+    <ClInclude Include="Vendor\imgui\stb_truetype.h" />
     <ClInclude Include="Vendor\stbi\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +193,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>
+    <None Include="Res\Models\YBot\ybot.fbx" />
     <None Include="Res\Shaders\Common.frag" />
     <None Include="Res\Shaders\Common.vert" />
     <None Include="Res\Shaders\NoLight.frag" />

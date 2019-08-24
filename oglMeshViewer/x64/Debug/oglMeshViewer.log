@@ -1,5 +1,8 @@
-﻿  Model.cpp
+﻿  Application.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005:  'APIENTRY': macro redefinition
+C:\dev\OpenGL\Projects\oglMeshViewer\Dependencies\glfw-3.3\include\GLFW\glfw3.h(104): message :  see previous definition of 'APIENTRY'
   main.cpp
+C:\dev\OpenGL\Projects\oglMeshViewer\oglMeshViewer\Source\Application.cpp(45,18): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005:  'APIENTRY': macro redefinition
   Generating Code...
 C:\dev\OpenGL\Projects\oglMeshViewer\Dependencies\glfw-3.3\include\GLFW\glfw3.h(104): message :  see previous definition of 'APIENTRY'

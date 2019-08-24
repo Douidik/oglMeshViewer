@@ -43,13 +43,15 @@ void Camera::input(float dt)
 	}
 
 	position += movement * dt;
-
-	mouseInput();
+		
+	if(glfwGetKey(&Window::Get(), GLFW_KEY_Q) == GLFW_PRESS)
+		mouseInput();
 }
 
 void Camera::mouseInput()
 {
 	double mouseX, mouseY;
+	glfwSetInputMode(&Window::Get(), GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 	glfwGetCursorPos(&Window::Get(), &mouseX, &mouseY);
 
 	glm::vec2 mouseMovement = glm::vec2{ mouseX - lastMousePosX,

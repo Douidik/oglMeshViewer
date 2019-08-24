@@ -2,11 +2,14 @@
 
 Application::Application()
 	:m_shaderPhong(Shader("Res/Shaders/Common.vert", "Res/Shaders/Common.frag")),
-	 m_shaderNoLight(Shader("Res/Shaders/NoLight.vert", "Res/Shaders/NoLight.frag")),
-	 testModel(Model("Res/Models/Nanosuit/nanosuit.obj")),
+	m_shaderNoLight(Shader("Res/Shaders/NoLight.vert", "Res/Shaders/NoLight.frag")),
+	m_model(Model("Res/Models/Nanosuit/nanosuit.obj")),
 	 m_camera(Camera())
 {
-	testModel.position = glm::vec3(0, 0, 0);
+	ImGui::CreateContext();
+	ImGui_ImplGlfwGL3_Init(&Window::Get(), true);
+	ImGui::StyleColorsDark();
+	
 	m_shader = &m_shaderPhong;
 }
 
@@ -17,8 +20,11 @@ void Application::Update()
 
 	double dt, lastTime;
 	dt = lastTime = 0.0;
+
 	while (Window::GetIsOpen())
 	{
+
+		ImGui_ImplGlfwGL3_NewFrame();
 
 		dt = glfwGetTime() - lastTime;
 		lastTime = glfwGetTime();
@@ -38,7 +44,7 @@ void Application::Update()
 
 		m_camera.input(dt);
 
-		glm::mat4 modelMat = Math::CreateModelMatrix(testModel);
+		glm::mat4 modelMat = Math::CreateModelMatrix(m_model);
 
 		glm::mat4 viewMat = Math::CreateViewMatrix(&m_camera);
 		glm::mat4 projMat = Math::CreateProjMatrix();
@@ -58,7 +64,15 @@ void Application::Update()
 
 		}
 
-		testModel.Draw(*m_shader);
+		m_model.Draw(*m_shader);
+
+		//Imgui slides
+		{
+			ImGui::SliderFloat3("Light position", &lightPos[0], -20.0f, 20.0f);
+		}
+		ImGui::Render();
+		ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
+
 
 		Window::Update();
 		Window::Clear();

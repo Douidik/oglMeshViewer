@@ -14,6 +14,7 @@ class Model : public Entity
 {
 public:
 	Model(const std::string& path);
+	Model() = default;
 	void Draw(Shader& shader);
 
 	std::vector<Texture> m_textureLoaded;
