@@ -16,7 +16,7 @@ typedef std::unique_ptr<GLFWwindow, DestroyWindow> Window_ptr;
 
 namespace Window
 {
-	constexpr unsigned int WIDTH = 1280, HEIGHT = 720;
+	constexpr unsigned int WIDTH = 1920, HEIGHT = 1080;
 
 	void Init();
 

@@ -44,7 +44,7 @@ void Camera::input(float dt)
 
 	position += movement * dt;
 		
-	if(glfwGetKey(&Window::Get(), GLFW_KEY_Q) == GLFW_PRESS)
+	if (glfwGetMouseButton(&Window::Get(), GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
 		mouseInput();
 }
 
@@ -57,8 +57,8 @@ void Camera::mouseInput()
 	glm::vec2 mouseMovement = glm::vec2{ mouseX - lastMousePosX,
 										 mouseY - lastMousePosY };
 
-	rotation.y += mouseMovement.x * 0.1;
-	rotation.x += mouseMovement.y * 0.1;
+	rotation.y += mouseMovement.x * static_cast<float>(0.1);
+	rotation.x += mouseMovement.y * static_cast<float>(0.1);
 
 	// Pitch
 	if (rotation.x > 80)

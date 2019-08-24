@@ -1,33 +1,30 @@
-#pragma once 
+#pragma once
 #include <gl/glew.h>
 #include <glm.hpp>
-#include "../../Vendor/stbi/stb_image.h"
-#include "Model.h"
-#include <assimp/scene.h>
-#include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
-#include "../Entity.h"
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
 #include "../Util/Shader.h"
+#include "../Entity.h"
 #include "Mesh.h"
+#include "../../Vendor/stbi/stb_image.h"
+#include <vector>
 
 class Model : public Entity
 {
 public:
 	Model(const std::string& path);
-	Model() = default;
 	void Draw(Shader& shader);
 
-	std::vector<Texture> m_textureLoaded;
+private:
+	std::vector<Texture> m_textureCache;
+	std::string m_directory;
 	std::vector<Mesh> m_meshes;
 
-	//this string will contain the path of the folder containing the files
-	std::string m_directory;
-
-private:
 	void LoadModel(const std::string& path);
-	Mesh ProcessMesh(aiMesh* mesh, const aiScene* scene);
 	void ProcessNode(aiNode* node, const aiScene* scene);
+	Mesh ProcessMesh(aiMesh* mesh, const aiScene* scene);
 	
-	std::vector<Texture> LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string name);
+	std::vector<Texture> LoadMaterialTexture(aiMaterial* mat, std::string typeName, aiTextureType type);
 
 };

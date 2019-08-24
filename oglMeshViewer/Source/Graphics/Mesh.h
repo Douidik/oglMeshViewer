@@ -1,8 +1,8 @@
 #pragma once
 #include <gl/glew.h>
 #include <glm.hpp>
-#include <iostream>
-
+#include <string>
+#include <vector>
 #include "../Util/Shader.h"
 
 struct Vertex
@@ -14,26 +14,21 @@ struct Vertex
 
 struct Texture
 {
-	GLuint id;
 	std::string type;
 	std::string path;
+	GLuint id;
 };
 
 class Mesh
 {
 public:
-	std::vector<GLuint> m_indices;
+	Mesh(std::vector<Vertex>vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
+	std::vector<Vertex>m_vertices;
+	std::vector<unsigned int> m_indices;
 	std::vector<Texture> m_textures;
-	std::vector<Vertex> m_vertices;
-
-	Mesh(std::vector<GLuint> indices,
-		std::vector<Texture> textures,
-		std::vector<Vertex> vertices);
 
 	void Draw(Shader& shader);
 
 private:
-	GLuint m_vao, m_vbo, m_ebo;
-
-	void SetupMesh();
+	unsigned int m_vao, m_vbo, m_ebo;
 };

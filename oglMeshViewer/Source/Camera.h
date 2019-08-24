@@ -17,8 +17,9 @@ public:
 	inline const glm::mat4& getProjMatrix() const { return m_projMatrix; }
 
 private:
+
 	void mouseInput();
-	double lastMousePosX, lastMousePosY;
+	double lastMousePosX, lastMousePosY;;
 
 	glm::mat4 m_viewMatrix, m_projMatrix;
 };

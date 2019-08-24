@@ -27,11 +27,12 @@ void main()
     vec3 diffuse = diff * lightColor;
 
     //Specular
-    float specularStrength = 0.5;
+    float specularStrength = 0.8;
     vec3 viewDir = normalize(viewPos - out_pos);
 	vec3 reflectDir = reflect(-lightDir, norm);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
-    vec3 specular = specularStrength * spec * lightColor * vec3(texture(texture_specular1, frag_uv));
+	vec3 specular = specularStrength * spec * lightColor * vec3(texture(texture_specular1, frag_uv));
+
 
     //vec3 result
     vec3 texColor = vec3(texture(texture_diffuse1, frag_uv));
